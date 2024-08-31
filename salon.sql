@@ -49,9 +49,9 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.appointments (
     appointment_id integer NOT NULL,
-    "time" character varying(30),
     service_id integer,
-    customer_id integer
+    customer_id integer,
+    "time" character varying(30)
 );
 
 
@@ -85,8 +85,8 @@ ALTER SEQUENCE public.appointments_appointment_id_seq OWNED BY public.appointmen
 
 CREATE TABLE public.customers (
     customer_id integer NOT NULL,
-    name character varying(30) NOT NULL,
-    phone character varying(30) NOT NULL
+    phone character varying(30) NOT NULL,
+    name character varying(30)
 );
 
 
@@ -120,9 +120,7 @@ ALTER SEQUENCE public.customers_customer_id_seq OWNED BY public.customers.custom
 
 CREATE TABLE public.services (
     service_id integer NOT NULL,
-    name character varying(30) NOT NULL,
-    available boolean DEFAULT true NOT NULL,
-    description text
+    name character varying(30)
 );
 
 
@@ -175,36 +173,55 @@ ALTER TABLE ONLY public.services ALTER COLUMN service_id SET DEFAULT nextval('pu
 -- Data for Name: appointments; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.appointments VALUES (1, NULL, NULL, '10');
+INSERT INTO public.appointments VALUES (2, 1, 2, '12
+  ');
+INSERT INTO public.appointments VALUES (3, 1, 1, '10
+  ');
+INSERT INTO public.appointments VALUES (4, 1, 3, '
+  ');
+INSERT INTO public.appointments VALUES (17, 1, 14, '
+  ');
+INSERT INTO public.appointments VALUES (24, 1, 1, '10h30');
+INSERT INTO public.appointments VALUES (25, 1, 20, '10h20');
+INSERT INTO public.appointments VALUES (26, 5, 21, '10');
 
 
 --
 -- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.customers VALUES (1, '111-111-1111', 'Cherif');
+INSERT INTO public.customers VALUES (2, '222-222-2222', 'Ulrich');
+INSERT INTO public.customers VALUES (3, '333-333-3333', 'Alvine');
+INSERT INTO public.customers VALUES (14, '444-444-4444', 'Saurelle');
+INSERT INTO public.customers VALUES (20, '888-888-8888', '');
+INSERT INTO public.customers VALUES (21, '2', '');
 
 
 --
 -- Data for Name: services; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.services VALUES (1, 'cut', true, 'forme de coiffures');
-INSERT INTO public.services VALUES (2, 'color', true, 'couleur de la teinture');
-INSERT INTO public.services VALUES (3, 'perm', true, 'permission du client');
-INSERT INTO public.services VALUES (4, 'style', true, 'style choisi par le client');
+INSERT INTO public.services VALUES (1, 'cut');
+INSERT INTO public.services VALUES (2, 'color');
+INSERT INTO public.services VALUES (3, 'perm');
+INSERT INTO public.services VALUES (4, 'style');
+INSERT INTO public.services VALUES (5, 'trim');
 
 
 --
 -- Name: appointments_appointment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.appointments_appointment_id_seq', 1, false);
+SELECT pg_catalog.setval('public.appointments_appointment_id_seq', 32, true);
 
 
 --
 -- Name: customers_customer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.customers_customer_id_seq', 1, false);
+SELECT pg_catalog.setval('public.customers_customer_id_seq', 26, true);
 
 
 --
